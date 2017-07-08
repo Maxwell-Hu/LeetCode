@@ -16,9 +16,8 @@ class MinStack(object):
         self.stack.append(x)
         if not self.stackMin:
             self.stackMin.append(x)
-        else:
-            if x < self.stackMin[len(self.stackMin)-1]:
-                self.stackMin.append(x)
+        elif x < self.stackMin[len(self.stackMin)-1]:
+            self.stackMin.append(x)
 
     def pop(self):
         """
