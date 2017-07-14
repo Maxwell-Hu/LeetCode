@@ -1,8 +1,8 @@
-# Definition for singly-linked list.
-#class ListNode(object):
-#    def __init__(self, x):
-#        self.val = x
-#        self.next = None
+tion for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
 class Solution(object):
     def getIntersectionNode(self, headA, headB):
@@ -10,24 +10,32 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
-        listA = self.traversal(headA)
-        listB = self.traversal(headB)
-        listA.reverse()
-        listB.reverse()
-        p = 0
-        for i in range(min(len(listA),len(listB))):
-            p = i
-            if listA[i] != listB[i] or listA[i][0] == None:
+        lenA = self.get_len(headA)
+        lenB = self.get_len(headB)
+        pA = headA
+        pB = headB
+        if lenA > lenB :
+            pA = self.move_pointer(pA, lenA-lenB)
+        elif lenA < lenB:
+            pB = self.move_pointer(pB, lenB-lenA)
+        for i in range(min(lenA,lenB)):
+            if pA.val == pB.val:
                 break
-        if p == 0 :
+            pA = pA.next
+            pB = pB.next
+        if pA == pB :
+            return pA
+        else:
             return
-        else :
-            return listA[p][1]
-    
-    def traversal(self,head):
-        listP = [[None,head]]
-        while head != None :
-            tmpP = [head.val,head.next]
-            listP.append(tmpP)
+        
+    def get_len(self, head):
+        len = 0
+        while head != None:
+            len += 1
             head = head.next
-        return listP
+        return len
+    
+    def move_pointer(self,head, length):
+        for _ in range(length):
+            head = head.next
+        return head
