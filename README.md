@@ -8,3 +8,5 @@ IntersectionOfTwoLinkedList.py --- https://leetcode.com/problems/intersection-of
 StackedQueue.py                --- https://leetcode.com/problems/implement-queue-using-stacks/#/description
 
 SerializeAndDeserializeTree.py --- https://leetcode.com/problems/serialize-and-deserialize-binary-tree/#/description
+
+BTreePreorderTraversal.py      --- https://github.com/Maxwell-Hu/LeetCode/blob/master/BTreePreorderTraversal.py
